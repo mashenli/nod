@@ -1,0 +1,62 @@
+<%- include adheader.ejs %>
+ <div class="right">
+        <div class="location">
+            <strong>你现在所在的位置是:</strong>
+            <span>添加剧目</span>
+        </div>
+        <div class="providerAdd">
+            <form action="/adindex/playmovie" method="post" >
+                <!--div的class 为error是验证错误，ok是验证成功-->
+                
+                <div>
+                    <label for="playName">选择演出厅：</label>
+                    
+                    <select name="playname">
+                        <% for(var i = 0; i < data.length; i++) { %>
+                        <option>
+                        <%= data[i].playname %>
+                        </option>
+                        <% } %>
+                    </select>
+                </div>
+                
+                
+                <div>
+                    <label >选择电影：</label>
+                    <select name="moviename">
+                        <% for(var i = 0; i < data1.length; i++) { %>
+                        <option>
+                        <%= data1[i].moviename %>
+                        </option>
+                        <% } %>
+                    </select>
+                    
+                    
+                </div>
+                <div>
+                    <label >影片播放时间：</label>
+                    <input type="data" name="time" />
+                    
+                    
+                </div>
+                <div>
+                    <label >影片播放具体时间：</label>
+                    <input type="data" name="playtime" />
+                    
+                    
+                </div>
+                <div>
+                    <label >票价：</label>
+                    <input type="int" name="price" />
+                    
+                    
+                </div>
+                <div class="providerAddBtn">
+                    <!--<a href="#">保存</a>-->
+                    <!--<a href="userList.html">返回</a>-->
+                    <input type="submit" value="保存" onclick="history.back(-1)"/  >
+                    <input type="button" value="返回" onclick="history.back(-1)"/>
+                </div>
+                
+            </form>
+        </div>

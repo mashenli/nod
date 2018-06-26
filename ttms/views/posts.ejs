@@ -1,0 +1,192 @@
+<%- include header.ejs %>
+
+
+
+		<div class="e-payment-section">
+			<div class="col-md-8 payment-left">
+				<div id="main">
+   <h2 class="top_title"><a href="http://www.helloweba.com/view-blog-278.html">请选座：</a></h2>
+   <div class="demo">
+   		<div id="seat-map">
+			<div class="front">屏幕</div>					
+		</div>
+		<div class="booking-details">
+			<p>影片：<span><%= moviename %></span></p>
+			<p>时间：<span><%= playtime %></span></p>
+			<p style="display: none" id="play"><%= playid%></p>
+			<p>座位：</p>
+			<ul id="selected-seats"></ul>
+			<p>票数：<span id="counter">0</span></p>
+			<p>总计：<b>￥<span id="total">0</span></b></p>
+						
+			<button class="checkout-button " id="submit">确定购买</button>
+			<script type="text/javascript">
+				
+					$("#submit").click(function(){
+								var playid = $("#play").text();
+    							var selected = $("#selected-seats li").text();
+    							console.log(selected);
+    		if(confirm("你确定要购买?")){
+    		$.ajax({
+    			data: {selected:selected,playid:playid},
+    			url: '/posts/:moviename/:key/:item',
+    			dataType: 'json',
+    		
+    			type:'post',
+    			success: function(data){
+
+    				alert("购买成功！");
+    				
+    				window.location.href=window.location.href;
+    				
+    			},
+    			error: function(jqXHR, textStatus, errorThrown){
+    				alert("失败！");  
+    			}
+    		});
+    	}					
+
+		});
+
+			</script>
+					
+			<div id="legend"></div>
+		</div>
+		<div style="clear:both"></div>
+		<ul style="display: none">
+		<%  for(var i=0;i<data1.length;i++) {%>
+			
+			<li class="li"><%= data1[i].seatrow%></li>
+			<li class="li1"><%= data1[i].seatcol%></li>
+
+		<% } %>
+		</ul>
+   </div>
+	
+  <br/>
+</div>
+<script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.seat-charts.min.js"></script>
+<script type="text/javascript">
+var price = <%= price %>; //票价
+var col = <%= play[0].playcol %>
+var row = <%= play[0].playrow %>;
+var li = document.getElementsByClassName('li');
+var li1 = document.getElementsByClassName('li1');
+
+var seal=[];
+
+for(var i=0;i<li.length;i++)
+{
+	var c="";
+	c+=li[i].innerHTML;
+	c+="_";
+	c+=li1[i].innerHTML;
+	seal[i]=c;
+}
+console.log(seal);
+var s = [];
+var str = "";
+for(var i=0;i<row;i++)
+{
+	str+="a";
+}
+for(var j=0;j<col;j++)
+{
+	s[j]=str;
+}
+
+
+$(document).ready(function() {
+	var $cart = $('#selected-seats'), //座位区
+	$counter = $('#counter'), //票数
+	$total = $('#total'); //总计金额
+	
+	var sc = $('#seat-map').seatCharts({
+		map: s,
+		naming : {
+			top : false,
+			getLabel : function (character, row, column) {
+				return column;
+			}
+		},
+		legend : { //定义图例
+			node : $('#legend'),
+			items : [
+				[ 'a', 'available',   '可选座' ],
+				[ 'a', 'unavailable', '已售出']
+			]					
+		},
+		click: function () { //点击事件
+			if (this.status() == 'available') { //可选座
+				$('<li id="li">'+(this.settings.row+1)+' 排 '+this.settings.label+' 座 </li>')
+					.attr('id', 'cart-item-'+this.settings.id)
+					.data('seatId', this.settings.id)
+					.appendTo($cart);
+
+				$counter.text(sc.find('selected').length+1);
+				$total.text(recalculateTotal(sc)+price);
+							
+				return 'selected';
+			} else if (this.status() == 'selected') { //已选中
+					//更新数量
+					$counter.text(sc.find('selected').length-1);
+					//更新总计
+					$total.text(recalculateTotal(sc)-price);
+						
+					//删除已预订座位
+					$('#cart-item-'+this.settings.id).remove();
+					//可选座
+					return 'available';
+			} else if (this.status() == 'unavailable') { //已售出
+				return 'unavailable';
+			} else {
+				return this.style();
+			}
+		}
+	});
+	//已售出的座位
+
+	sc.get(seal).status('unavailable');
+		
+});
+//计算总金额
+function recalculateTotal(sc) {
+	var total = 0;
+	sc.find('selected').each(function () {
+		total += price;
+	});
+			
+	return total;
+}
+</script>
+					
+					<div class="clearfix"> </div>
+			</div>
+	
+	
+		<script>
+			$(document).ready(function() {
+				$("#tab2").hide();
+				$("#tab3").hide();
+				$("#tab4").hide();
+				$(".tabs-menu a").click(function(event){
+					event.preventDefault();
+					var tab=$(this).attr("href");
+					$(".tab-grid").not(tab).css("display","none");
+					$(tab).fadeIn("slow");
+				});
+			});
+		</script>
+
+				
+			
+			
+			<div class="clearfix"></div>
+		</div>
+		</div>
+
+<link rel="stylesheet" type="text/css" href="/stylesheets/seat.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+
+<%- include footer.ejs %>

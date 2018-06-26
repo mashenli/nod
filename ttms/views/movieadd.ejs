@@ -1,0 +1,62 @@
+<%- include adheader.ejs %>
+ <div class="right">
+        <div class="location">
+            <strong>你现在所在的位置是:</strong>
+            <span>添加电影页面</span>
+        </div>
+        <div class="providerAdd">
+            <form action="/adindex/movieadd" method="post" >
+                <!--div的class 为error是验证错误，ok是验证成功-->
+                <div class="">
+                    <label for="userId">电影名称：</label>
+                    <input type="text" name="moviename" id="userId"/>
+                    <span>*请输入电影名称，且不能重复</span>
+                </div>
+                <div>
+                    <label for="userName">电影时长</label>
+                    <input type="text" name="movielenth" id="userId"/>
+                   
+                    
+                </div>
+                <div>
+                    <label for="userpassword">图片路径：</label>
+                    <input type="text" name="movieimage"/>
+                    
+
+                </div>
+                
+                <div>
+                    <label >电影类型</label>
+                    <input type="text" name="moviestyle" id="userName"/>
+                    
+                    
+                </div>
+               
+                <div>
+                    <label for="userphone">电影简介</label>
+                    <input type="text" name="movieintroduction" id="userphone"/>
+                    
+                </div>
+                <div>
+                    <label for="userphone">上映时间</label>
+                    <input type="text" name="movietime" id="userphone"/>
+                    
+                </div>
+               
+                
+                <div class="providerAddBtn">
+                    <!--<a href="#">保存</a>-->
+                    <!--<a href="userList.html">返回</a>-->
+                    <input type="submit" value="保存" onclick="history.back(-1)"/  >
+                    <input type="button" value="返回" onclick="history.back(-1)"/>
+                </div>
+            </form>
+        </div>
+        
+        
+       
+
+      
+
+
+   

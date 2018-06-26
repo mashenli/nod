@@ -1,0 +1,49 @@
+<%- include adheader.ejs %>
+
+<div class="right">
+        <div class="location">
+            <strong>你现在所在的位置是:</strong>
+            <span>演出厅信息</span>
+        </div>
+        
+        <!--供应商操作表格-->
+        <table class="providerTable" cellpadding="0" cellspacing="0">
+            <tr class="firstTr">
+                <th width="20%">演出厅名称</th>
+  
+                <th width="20%">演出厅行数</th>
+
+                
+                <th width="20%">演出厅列数</th>
+                <th width="40%">操作</th>
+            </tr>
+
+           
+           
+            
+              <% for(var i = 0; i < data.length; i++) { %>
+              <tr>
+                <td>
+                    <%= data[i].playname %>
+                </td>
+                 <td>
+                    <%= data[i].playrow %>
+                </td>
+                 <td>
+                    <%= data[i].playcol %>
+                </td>
+                
+                 <td>
+                    
+                    
+                    <a href="#" class="removeProvider" action="/adindex/movieadd" method="post"><img src="/images/img/schu.png" alt="删除" title="删除"/></a>
+                </td>
+              </tr>
+              <% } %>
+            
+
+           
+        </table>
+
+    </div>
+ 

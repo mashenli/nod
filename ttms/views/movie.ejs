@@ -1,0 +1,59 @@
+<%- include header.ejs %>
+<div class="now-showing-list">
+		<div class="col-md-4 movies-by-category movie-booking">
+			<h5><%= data1[0].moviename %></h5>
+			
+			<div class="movie-ticket-book">
+	
+					<div class="clearfix"></div>
+					<img src =../<%= data1[0].movieimage %> alt=""  style="width: 250.8px;height: 263.01px"/>
+					<div class="bahubali-details">
+						<h4>上映时间:</h4>
+						<p><%= data1[0].movietime %></p>
+						<h4>片长:</h4>
+						<p> <%= data1[0].movielenth %> </p>
+						
+						<h4>类型:</h4>
+						<p><%= data1[0].moviestyle %></p>
+						<h4>电影简介</h4>
+						<p><%= data1[0].movieintroduction %></p>
+					</div>
+				</div>
+			</div>
+		<div class="col-md-8 movies-dates">	
+			<%	m.forEach(function (item, key, mapObj) {		%>
+			<div class="movie-date-selection">
+				<ul>
+
+					<li class="location">
+						<a href="/posts"><i class="fa fa-map-marker"><%= key   %></i></a>
+					</li>
+	
+			<%		for(var i=0;i<item.length;i++){			%>
+						<li class="time">
+						<a href="/posts/moviename=<%= data1[0].moviename%>/key=<%= key%>/item=<%= item[i]%>"> <%= item[i] %> </a>
+						</li>
+			<%		}	%>
+					
+				
+				</ul>
+			</div>
+
+
+
+
+    		
+			<%		});	%>
+
+
+
+			
+			
+	
+			
+		</div>
+		<div class="clearfix"></div>
+	</div>
+		</div>
+
+<%- include footer.ejs %>

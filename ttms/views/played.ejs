@@ -1,0 +1,85 @@
+<%- include adheader.ejs %>
+
+<div class="right">
+        <div class="location">
+            <strong>你现在所在的位置是:</strong>
+            <span>演出计划</span>
+        </div>
+        
+      
+        <table class="providerTable" cellpadding="0" cellspacing="0">
+            <tr class="firstTr">
+                <th width="20%">演出厅名称</th>
+  
+                <th width="20%">电影名称</th>
+
+                
+                <th width="20%">播放时间</th>
+                 <th width="20%">票价</th>
+                <th width="40%">操作</th>
+            </tr>
+
+           
+           
+            
+              <% for(var i = 0; i < data.length; i++) { %>
+              <tr>
+                <td class="td">
+                    <%= data[i].playname %>
+                </td>
+                 <td>
+                    <%= data[i].moviename %>
+                </td>
+                 <td class="pt">
+                    <%= data[i].playtime %>
+                </td>
+                <td>
+                    <%= data[i].price %>
+                </td>
+                
+                 <td>
+                    
+                    
+                  <button class="btn btn-primary subt"  onclick="return tuipiao(this)" id=<%= i %>>删除</button>
+                </td>
+              </tr>
+              <% } %>
+            
+
+           
+        </table>
+
+    </div>
+ 
+ <script type="text/javascript">
+               function tuipiao(obj)
+                            {
+                         
+                          
+                        var i=obj.id;
+                        var td=document.getElementsByClassName('td')[i].innerText;
+                        var pt=document.getElementsByClassName('pt')[i].innerText;
+                       
+                   
+                            
+            $.ajax({
+              
+                url: '/adindex/played',
+                dataType: 'json',
+                data:{td,pt},
+                type:'post',
+                success: function(data){
+
+                   
+                    alert("删除成功！");
+                    window.location.href=window.location.href;
+                },
+                error: function(jqXHR, textStatus, errorThrown){
+                    alert('error ' + textStatus + " " + errorThrown);  
+                }
+                   
+            });
+        
+                
+}
+            </script>

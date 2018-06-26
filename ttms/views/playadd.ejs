@@ -1,0 +1,39 @@
+<%- include adheader.ejs %>
+ <div class="right">
+        <div class="location">
+            <strong>你现在所在的位置是:</strong>
+            <span>演出厅管理</span>
+        </div>
+        <div class="providerAdd">
+            <form action="/adindex/playadd" method="post" >
+                <!--div的class 为error是验证错误，ok是验证成功-->
+                
+                <div>
+                    <label for="playName">选择演出厅：</label>
+                    <input type="text" name="playname" id="userName"/>
+                   
+                    
+                </div>
+                
+                
+                <div>
+                    <label >添加座位行数：</label>
+                    <input type="text" name="playrow" id="userName"/>
+                    
+                    
+                </div>
+                <div>
+                    <label >添加座位列数：</label>
+                    <input type="text" name="playcol" id="userName"/>
+                    
+                    
+                </div>
+                <div class="providerAddBtn">
+                    <!--<a href="#">保存</a>-->
+                    <!--<a href="userList.html">返回</a>-->
+                    <input type="submit" value="保存" onclick="history.back(-1)"/  >
+                    <input type="button" value="返回" onclick="history.back(-1)"/>
+                </div>
+                
+            </form>
+        </div>

@@ -1,0 +1,279 @@
+<%- include header.ejs %>
+
+
+	<div class="main-banner">
+		 <div class="banner col-md-8">
+			<section class="slider">
+				<div class="flexslider">
+						<ul class="slides">
+						<li>
+							<img src="images/21克拉.jpg" class="img-responsive" alt="" / style="width: 666px;height: 355px;">
+						</li>
+						<li>
+							<img src="images/2.jpg" class="img-responsive" alt="" / style="width: 666px;height: 355px;">
+						</li>
+						<li>
+							<img src="images/3.jpg" class="img-responsive" alt="" / style="width: 666px;height: 355px;">
+						</li>
+						<li>
+							<img src="images/4.jpg" class="img-responsive" alt="" / style="width: 666px;height: 355px;">
+						</li>
+				  </ul>
+				</div>
+					</section>
+				 <!-- FlexSlider -->
+				 <script defer src="/javascripts/jquery.flexslider.js"></script>
+				 <link rel="stylesheet" href="/stylesheets/flexslider.css" type="text/css" media="screen" />
+					<script type="text/javascript">
+				$(function(){
+				 SyntaxHighlighter.all();
+				});
+				$(window).load(function(){
+				  $('.flexslider').flexslider({
+					animation: "slide",
+					start: function(slider){
+					  $('body').removeClass('loading');
+					}
+				 });
+				});
+			 </script>
+         </div>
+		 <div class="col-md-4 banner-right">
+			<h4>票房周冠军</h4>
+			<div class="grid_3 grid_5">
+				   <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+			
+			<div id="myTabContent" class="tab-content">
+			  <table class="table table-hover">
+			  	<tbody>
+			  		<td>1</td>
+			  		<td><a href=>复仇者联盟3</a></td>
+			  	</tbody>
+			  	<tbody>
+			  		<td>2</td>
+			  		<td><a href=>战狼2</a></td>
+			  	</tbody>
+			  	<tbody>
+			  		<td>3</td>
+			  		<td><a href=>后来的我们</a></td>
+			  	</tbody>
+			  	<tbody>
+			  		<td>4</td>
+			  		<td><a href=>寂静之地</a></td>
+			  	</tbody>
+
+
+
+			  </table>
+			  
+			</div>
+		   </div>
+		  </div>
+		 </div>
+		 <div class="clearfix"></div>
+	</div>
+				<div class="review-slider">
+			 <ul id="flexiselDemo1">
+			 	<%  for(var i=0 ;i<data1.length;i++) {  %>
+				<li>
+				
+				<a href="/movie"><img src = <%=data1[i].movieimage %> alt=""/ style="width: 198px;height: 231px;"></a>
+				<div class="slide-title"><h4 class="moviename"><%= data1[i].moviename %></h4></div>
+				<div class="date-city">
+					<h5><%= data1[i].movielenth%></h5>
+		
+					<div class="buy-tickets">
+						
+					<a href="/movie/id=<%= data1[i].moviename%>" class="aint" >订票</a>
+					</div>
+				</div>
+				</li>
+			
+				<% } %>
+			</ul>
+			
+			
+			<script type="text/javascript">
+		$(window).load(function() {
+			
+		  $("#flexiselDemo1").flexisel({
+				visibleItems: 5,
+				animationSpeed: 1000,
+				autoPlay: true,
+				autoPlaySpeed: 3000,    		
+				pauseOnHover: false,
+				enableResponsiveBreakpoints: true,
+				responsiveBreakpoints: { 
+					portrait: { 
+						changePoint:480,
+						visibleItems: 2
+					}, 
+					landscape: { 
+						changePoint:640,
+						visibleItems: 3
+					},
+					tablet: { 
+						changePoint:800,
+						visibleItems: 4
+					}
+				}
+			});
+			});
+		</script>
+		<script type="text/javascript" src="/javascripts/jquery.flexisel.js"></script>	
+		<div class="footer-top-grid">
+			<div class="list-of-movies col-md-8">
+			<div class="tabs">
+				<div class="sap_tabs">	
+						 <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
+						  <ul class="resp-tabs-list">
+						  	  <li class="resp-tab-item" aria-controls="tab_item-2" role="tab"><span>正在上映</span></li>
+							 
+							  
+							  <div class="clearfix"></div>
+						  </ul>				  	 
+							<div class="resp-tabs-container">
+							    <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
+									<ul class="tab_img">
+									  
+									  	<% for(var i=0;i<data1.length;i++) { %>
+									  	<li>
+										<div class="view view-first">
+					   		  			  <a href="movie-select-show.html"> 
+					   		  			  	<img src=<%=data1[i].movieimage %> class="img-responsive" alt=""/ style="width: 250.8px;height: 263.01px"></a>
+										   <div class="info1"> </div>
+											 <div class="mask">
+						                     </div>
+								              <div class="tab_desc">
+													<a href="/movie/id=<%= data1[i].moviename%>">买票</a>
+													<div class="percentage-w-t-s">
+														<h5>97</h5>
+														<p>% <br> 好评率</p>
+														<div class="clearfix"></div>
+													</div>
+											  </div>
+										  </div>
+										</li>
+										  <% } %>
+										</ul>
+									</div>
+
+
+									 
+							    
+										
+										<div class="clearfix"></div>
+									</ul>
+							     </div>	
+							     <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-3">
+									<ul class="tab_img">
+									  <li>
+										<div class="view view-first">
+					   		  			  <a href="/movie"> <img src="images/pic-6.jpg" class="img-responsive" alt=""/ style="width: 214.31px;height: 263.01"></a>
+											 <div class="mask">
+						                        <div class="info1"> </div>
+								              </div>
+								                <div class="tab_desc">
+													<a href="movie-select-show.html">订票</a>
+											  </div>
+										  </div>
+										</li>
+										<li>
+										  <div class="view view-first">
+					   		  			  <a href="/movie"> <img src="images/pic-1.jpg" class="img-responsive" alt=""/ style="width: 214.31px;height: 263.01"></a>
+											 <div class="mask">
+						                        <div class="info1"> </div>
+								              </div>
+								                <div class="tab_desc">
+													<a href="movie-select-show.html">订票</a>
+											  </div>
+										  </div>
+										</li>
+										<li>
+										  <div class="view view-first">
+					   		  			  <a href="/movie"> <img src="images/pic-9.jpg" class="img-responsive" alt=""/ style="width: 214.31px;height: 263.01"></a>
+											 <div class="mask">
+						                        <div class="info1"> </div>
+								              </div>
+								                <div class="tab_desc">
+													<a href="movie-select-show.html">订票</a>
+											  </div>
+										  </div>
+										</li>
+										<div class="clearfix"></div>
+									</ul>
+						    	</div>		        					 	        					 
+			     		    </div>	
+                        </div>
+					</div>
+				</div>	
+				<div class="clearfix"></div>
+				
+			</div>
+			
+				
+			<div class="clearfix"></div>			
+			</div></div>
+		</div>
+		<div class="footer">
+			<div class="col-md-3 footer-left">
+				<div class="f-mov-list">
+					<h4>选座购票流程</h4>
+					<ul>
+						<li><a href="">选择影片和场次</a></li>
+						<li><a href="">选择中意的座位</a></li>
+						<li><a href="">支付并收到取票短信</a></li>
+					</ul>
+					<div class="clearfix"></div>
+				</div>
+				
+			</div>
+			<div class="col-md-3 footer-left">
+				<div class="f-mov-list">
+					<h4>取票流程</h4>
+					<ul>
+						<li><a href="#">收到取票短信</a></li>
+						<li><a href="#">影院自助取票</a></li>
+						<li><a href="#">短信重发方式</a></li>						
+					</ul>
+					<div class="clearfix"></div>
+				</div>
+				
+			</div>
+			<div class="col-md-3 footer-left">
+				<div class="f-mov-list">
+					<h4>常见问题</h4>
+					<ul>
+						<li><a href="">是否支持退票</a></li>
+						<li><a href="">填错手机号怎么办</a></li>
+						<li><a href="">更多问题</a></li>
+					</ul>
+					<div class="clearfix"></div>					
+				</div>	
+				
+			</div>			
+			
+			<div class="col-md-3 footer-left">
+				<div class="f-mov-list">
+					<h4>协议规范</h4>
+					<ul>
+						<li><a href="">用户服务协议</a></li>
+						<li><a href="">食品管理规范</a></li>
+						<li><a href="">隐私权政策</a></li>
+					
+						
+					</ul>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+			
+			
+			
+	</div>
+			
+	
+
+			
+</body>
+</html>

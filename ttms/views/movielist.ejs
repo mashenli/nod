@@ -1,0 +1,98 @@
+<%- include adheader.ejs %>
+
+<div class="right">
+        <div class="location">
+            <strong>你现在所在的位置是:</strong>
+            <span>电影管理页面</span>
+        </div>
+        
+        <!--供应商操作表格-->
+        <table class="providerTable" cellpadding="0" cellspacing="0">
+            <tr class="firstTr">
+                <th width="10%">电影名称</th>
+                <th width="10%">电影时长</th>
+                <th width="10%">电影类型</th>
+                <th width="10%">图片路径</th>
+                <th width="30%">电影简介</th>
+                
+                
+                <th width="20%">操作</th>
+            </tr>
+
+           
+           
+            
+              <% for(var i = 0; i < data.length; i++) { %>
+              <tr>
+                <td class="td">
+                    <%= data[i].moviename %>
+                </td>
+                 <td>
+                    <%= data[i].movielenth %>
+                </td>
+                 <td>
+                    <%= data[i].moviestyle %>
+                </td>
+                <td>
+                    <%= data[i].movieimage %>
+                </td>
+                 <td>
+                    <%= data[i].movieintroduction %>
+                </td>
+                 <td>
+                    
+                    <button class="btn btn-primary subt"  onclick="return tuipiao(this)" id=<%= i %>>删除</button>
+                    
+                </td>
+              </tr>
+              <% } %>
+            
+
+           
+        </table>
+
+    </div>
+ 
+
+
+<script type="text/javascript">
+               function tuipiao(obj)
+                            {
+                         alert(obj.id);
+                          
+                        var i=obj.id;
+                        var td=document.getElementsByClassName('td')[i].innerText;
+                        console.log(td);
+                   
+                            
+            $.ajax({
+              
+                url: '/bossindex/userlist',
+                dataType: 'json',
+                data:{td},
+                type:'post',
+                success: function(data){
+
+                   
+                    alert("删除成功！");
+                },
+                error: function(jqXHR, textStatus, errorThrown){
+                    alert('error ' + textStatus + " " + errorThrown);  
+                }
+                   
+            });
+        
+                
+}
+            </script>
+
+
+
+
+
+<script src="/javascripts/js/jquery.js"></script>
+<script src="/javascriptsjs/js.js"></script>
+<script src="/javascripts/js/time.js"></script>
+
+</body>
+</html>
